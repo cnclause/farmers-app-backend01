@@ -3,6 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const passport = require('passport')
+
+
+require('dotenv').config()
+
+const user = require('./api/users')
+const auth = require('./auth/index')
 
 var app = express();
 
@@ -14,12 +21,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(passport.initialize())
 
-app.get('/', (req, res) => {
-  res.json({
-      message: "Here"
-  })
-})
+
+app.use('/auth', auth)
+app.use('/user', user)
+
 
 
 // catch 404 and forward to error handler
