@@ -6,11 +6,11 @@ const { create } = require('./utils');
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.json({
-        message: "in auth"
-    })
-})
+// router.get('/', (req, res) => {
+//     res.json({
+//         message: "in auth"
+//     })
+// })
 
 
 router.get('/google',
