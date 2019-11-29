@@ -8,6 +8,10 @@ module.exports = {
         user = await knex('users').where('email', email).first() 
         return user
     },
+    async findByUsername(username){
+        user = await knex('users').where('display_name', username).first() 
+        return user
+    },
     async addUser(user){
         console.log("addin da user")
         return await knex('users').insert(user, '*')

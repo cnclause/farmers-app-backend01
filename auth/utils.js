@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken')
 
-const users = require('../queries/users')
 
 function create(user){
     return new Promise((resolve, reject) => {

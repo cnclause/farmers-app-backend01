@@ -3,7 +3,6 @@ const { verify } = require('../auth/utils')
 // will grab auth header from req and verify it
 async function checkAuthHeaderSetUser(req, res, next) {
     const authorization = req.get('authorization')
-    // console.log('authhead', authorization)
     if(authorization) {
         const token = authorization.split(' ')[1]
         try {
