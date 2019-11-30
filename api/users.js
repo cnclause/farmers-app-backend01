@@ -24,4 +24,10 @@ function resError(res, statusCode, message){
     res.json({ message })
 }
 
+router.put('/:google_id', (req, res, next) => {
+    queries.updateUser(req.params.id, req.body)
+        .then(user => {
+            res.json(user[0])
+        })
+})
 module.exports = router

@@ -2,7 +2,7 @@ const knex = require('../db/knex')
 
 module.exports = {
     async getOne(id){
-        return await knex('users').where('id', id).first()
+        return await knex('users').where('google_id', id).first()
     },
     async findByEmail(email){
         user = await knex('users').where('email', email).first() 
@@ -15,6 +15,10 @@ module.exports = {
     async addUser(user){
         console.log("addin da user")
         return await knex('users').insert(user, '*')
+    },
+    updateUser(google_id, user){
+        console.log("posting user")
+        return knex('users').where('google_id', google_id).update(user, '*')
     },
     async findOrCreate(userProfile){
         const email = userProfile.email
