@@ -19,15 +19,15 @@ router.get('/:id', (req, res) => {
     }
 })
 
-function resError(res, statusCode, message){
-    res.status(statusCode)
-    res.json({ message })
-}
-
-router.put('/:google_id', (req, res, next) => {
+router.patch('/:id', (req, res, next) => {
     queries.updateUser(req.params.id, req.body)
         .then(user => {
             res.json(user[0])
         })
 })
+function resError(res, statusCode, message){
+    res.status(statusCode)
+    res.json({ message })
+}
+
 module.exports = router

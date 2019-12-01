@@ -16,9 +16,9 @@ module.exports = {
         console.log("addin da user")
         return await knex('users').insert(user, '*')
     },
-    updateUser(google_id, user){
+    updateUser(id, user){
         console.log("posting user")
-        return knex('users').where('google_id', google_id).update(user, '*')
+        return knex('users').where('google_id', id).update(user, '*')
     },
     async findOrCreate(userProfile){
         const email = userProfile.email
