@@ -20,14 +20,24 @@ router.get('/:id', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-    // queries.getAll().then(comments => {
-    //     res.json(comments)
-    // })
-    knex('comments')
-        .whereNotNull('comments.parent_id')
-        .andWhere('comments.id', 'comments.parent_id')
-        .then(console.log)
-//         .then(comments => res.json(comments))
+    // return knex('comments').groupBy('id')
+    //     .havingNotNull('parent_id')
+        getResponsesOfComments()
+            .then(comments => res.json({comments}))
 })
+
+function getResponsesOfComments() {
+    return knex('comments').groupBy('id')
+    .then(comments => {
+        const promises = comments.map(comment => {
+            return knex('comments').where({parent_id: comment.id})
+            .then(responses => {
+                comment.responses = responses
+                return comment
+            })
+        })
+        return Promise.all(promises)
+    })
+}
 
 module.exports = router
