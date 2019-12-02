@@ -24,7 +24,8 @@ router.get('/forecast', async (req, res, next) => {
           latitude:37.8267,
           longitude: -122.423,
           language: 'en',
-          exclude:'minutely, flags, alerts'
+          exclude:'minutely, flags, alerts',
+          units: 'uk2',
         
         })
         .get()
