@@ -26,7 +26,8 @@ function getTopicsWithComments() {
             return knex('comments').where({topic_id: topic.id})
             .then(comments => {
                 topic.comments = comments
-                console.log('comments',comments)
+                // console.log('comments',comments)
+                console.log('comment', comments)
                 return topic
             })
         })
@@ -34,10 +35,30 @@ function getTopicsWithComments() {
     })
 }
 
+// function getResponsesOfComments() {
+//     return knex('comments').groupBy('id')
+//     .then(comments => {
+//         const promises = comments.map(comment => {
+//             return knex('comments').where({parent_id: comment.id})
+//             .then(responses => {
+//                 comment.responses = responses
+//                 console.log(comment)
+//                 // return comment
+//             })
+//         })
+//         return Promise.all(promises)
+//     })
+// }
+
+
+
 router.get('/', (req, res) => {
     getTopicsWithComments()
         .then(comments => {res.json(comments)})
+    // queries.getAll()
+    //     .then(topics => res.json(topics))
     })
 
+   
 
 module.exports = router
