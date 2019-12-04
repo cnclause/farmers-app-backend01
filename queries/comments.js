@@ -8,6 +8,6 @@ module.exports = {
         return knex('comments').where('id', id).first()
     },
     create(comment) {
-        return knex('comments').inster(comment, '*')
+        return knex('comments').insert(comment, '*')
     }
 }
