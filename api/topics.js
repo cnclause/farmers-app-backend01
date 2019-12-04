@@ -50,7 +50,11 @@ function getTopicsWithComments() {
 //     })
 // }
 
-
+router.post('/', (req, res) => {
+    queries.create(req.body).then(topics => {
+        res.json(topics[0])
+    })
+})
 
 router.get('/', (req, res) => {
     getTopicsWithComments()

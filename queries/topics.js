@@ -8,6 +8,6 @@ module.exports = {
         return knex('topics').where('id', id).first()
     },
     create(topic) {
-        return knex('topics').inster(topic, '*')
+        return knex('topics').insert(topic, '*')
     }
 }

@@ -10,6 +10,8 @@ const queries = require('../queries/comments')
 router.get('/topics', (req, res) => {
     getTopicsWithComments()
         .then(topics => res.json(topics))
+    // getTopicswithAllComments()
+    // .then(topics => res.json(topics))
 })
 
 router.get('/:id', (req, res) => {
@@ -110,6 +112,27 @@ async function getTopicsWithComments(){
         topic.comments = topLevelComments
     })
     return topics
+}
+
+async function getTopicswithAllComments(){
+    const topics = await getTopics()
+    const comments = await getComments()
+    const hasParent = false
+
+    topics.forEach(topic => {
+        const topLevelComments = comments.filter(comment =>{
+            return comment.topic_id === topic.id && !comment.parent_id
+        })
+        const checkForParent = (comment) => {
+           topLevelComments.forEach(topLevelComment =>{
+               console.log('comment', comment)
+               console.log('toplevel', topLevelComment)
+               comment.parent_id === topLevelComment.id
+           })
+        }
+        console.log(comments.some(checkForParent))
+
+    })
 }
 
 
