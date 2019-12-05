@@ -18,7 +18,7 @@ module.exports = {
     },
     updateUser(id, user){
         console.log("posting user")
-        return knex('users').where('google_id', id).update(user, '*')
+        return knex('users').where('id', id).update(user, '*')
     },
     async findOrCreate(userProfile){
         const email = userProfile.email

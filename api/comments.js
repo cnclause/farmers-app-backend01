@@ -47,6 +47,7 @@ async function getComments(){
 }
 
 async function getTopicsWithComments(){
+    // need to add comments as an empty array on creation of posts so can iterate in front end
     const topics = await getTopics()
     const comments = await getComments()
     topics.forEach(topic => {

@@ -29,7 +29,7 @@ app.use(cors())
 app.use(passport.initialize())
 app.use(checkAuthHeaderSetUser)
 
-app.get('/', checkAuthHeaderSetUserUnAuthorized, (req, res) => {
+app.get('/', (req, res) => {
   res.json({
     message: "we are home"
   })

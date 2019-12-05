@@ -22,6 +22,7 @@ router.get('/:id', (req, res) => {
 router.patch('/:id', (req, res, next) => {
     queries.updateUser(req.params.id, req.body)
         .then(user => {
+            console.log('user', user)
             res.json(user[0])
         })
 })
