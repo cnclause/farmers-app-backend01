@@ -9,6 +9,16 @@ Cannect is a cannabis farmers application with the goal to connect cannabis farm
 3. Knex - SQL query builder
 4. PostgreSQL - relational database management system 
 
+## Database Relationships
+
+The structure of the relationships are: 
+- A user can have many topics and each topic belongs to only one user
+- A user can have many comments and each comment belongs to only one user
+- A topic can have many comments and each comment belongs to only one topic
+- Each comment can have many other comments (children), but each comment can have only one parent comment 
+
+![Image of Relationships](./imagesForReadMe/DBrelationship.png)
+
 ## Authentication
 
 In order to have user authentication through a gmail account the following packages were installed: 
