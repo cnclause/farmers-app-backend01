@@ -35,25 +35,6 @@ router.get('/google/callback', (req, res, next) => {
     }) (req, res, next)     
 })
 
-// function createAuthPage(token){
-//     return `
-//         <!DOCTYPE html>
-//         <html>
-//         <head>
-//             <title>Authenticated</title>
-//             <script type="text/javascript">
-//                 window.opener.postMessage({
-//                     command: "setToken",
-//                     token: "${token}"
-//                 }, "https://localhost:8080");
-//                 window.close();
-//             </script>
-//         </head>
-//         <body></body>
-//     </html>
-
-//     `
-// }
 
 
 
