@@ -13,11 +13,9 @@ module.exports = {
         return user
     },
     async addUser(user){
-        console.log("addin da user")
         return await knex('users').insert(user, '*')
     },
     updateUser(id, user){
-        console.log("posting user")
         return knex('users').where('id', id).update(user, '*')
     },
     async findOrCreate(userProfile){

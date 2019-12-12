@@ -26,10 +26,6 @@ router.get('/:id', (req, res) => {
     }
 })
 
-// router.get('/', (req, res) => {
-//     getResponsesOfComments()
-//         .then(comments => res.json(comments))
-// })
 
 router.post('/', (req, res) => {
     queries.create(req.body).then(comments => {
@@ -70,41 +66,6 @@ async function getTopicsWithComments(){
     })
     return topics
 }
-
-// async function getTopicswithAllComments(){
-//     const topics = await getTopics()
-//     const comments = await getComments()
-//     const hasParent = false
-
-//     topics.forEach(topic => {
-//         const topLevelComments = comments.filter(comment =>{
-//             return comment.topic_id === topic.id && !comment.parent_id
-//         })
-//         const checkForParent = (comment) => {
-//            topLevelComments.forEach(topLevelComment =>{
-//                console.log('comment', comment)
-//                console.log('toplevel', topLevelComment)
-//                comment.parent_id === topLevelComment.id
-//            })
-//         }
-//         console.log(comments.some(checkForParent))
-
-//     })
-// }
-
- // for each comment find any comments that have that comment as parent id
-    // will take in a comment and go through all comments and find any comments that have parent id that matches the comment id
-
-// function findChildrenId(id){
-//     // console.log('commentinfunction', typeof id) 
-//    return knex('comments').groupBy('id')
-//     .then(allComments => {
-//         // console.log('allcomments',allComments) an array
-//         allComments.filter(comments => {
-//             // console.log('FilterparentID', typeof comments.parent_id, comments.parent_id)
-//             return comments.parent_id === id})
-//     })
-// }
 
 
 
