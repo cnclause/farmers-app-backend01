@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const knex = require('../db/knex')
-const queries = require('../queries/topics')
+const queries = require('../queries/roles')
 
 router.get('/', (req, res) => {
     queries.getAll()
