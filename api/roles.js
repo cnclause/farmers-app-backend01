@@ -15,3 +15,5 @@ router.post('/', (req, res, next) => {
        return res.json(roles[0])
     })
 })
+
+module.exports = router
