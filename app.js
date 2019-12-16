@@ -15,6 +15,7 @@ const weather = require('./api/weather')
 const topics = require('./api/topics')
 const comments = require('./api/comments')
 const roles = require('./api/roles')
+const articles = require('./api/articles')
 
 var app = express();
 
@@ -45,6 +46,7 @@ app.use('/weather', weather)
 app.use('/topics', topics)
 app.use('/comments', comments)
 app.use('/roles', roles)
+app.use('/articles', articles)
 
 
 

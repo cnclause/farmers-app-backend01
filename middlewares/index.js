@@ -8,7 +8,6 @@ async function checkAuthHeaderSetUser(req, res, next) {
         try {
             const user = await verify(token)
             req.user = user
-            console.log("user", user)
         } catch (error) {
             console.log(error)
         }
@@ -31,6 +30,15 @@ async function checkAuthHeaderSetUserUnAuthorized(req, res, next){
     res.status(401)
     next(new Error('un-authorized'))
 }
+
+function isAdmin(req, res, next){
+    if(req.user && req.user.role_id === 1){
+        return next()
+    }
+    res.status(401)
+    next(new Error ('Un-Authorized'))
+}
+
 
 
 // catch 404 and forward to error handler
