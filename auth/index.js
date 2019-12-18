@@ -24,9 +24,7 @@ router.get('/google/callback', (req, res, next) => {
         try {
             console.log('creating token with', user)
             const token = await create(user)
-            // res.json({ token })
             res.redirect(`${process.env.CLIENT_REDIRECT}?token=${token}`)
-            // res.send(createAuthPage(token))
         } catch (error) {
             res.redirect(`${process.env.CLIENT_ERROR_REDIRECT}${error.message}`)
             res.json({ error })
